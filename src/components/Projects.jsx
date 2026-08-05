@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
-// Projects Page Component fetching GitHub repositories via API
+// Import Spinner and ErrorMessage components
+import Spinner from './Spinner';
+import ErrorMessage from './ErrorMessage';
+
 function Projects() {
-  // Required useState variables
+  // useState hooks for storing repositories, loading, and error states
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // GitHub username variable
   const githubUsername = "24CS054KRISH";
 
-  // useEffect hook to fetch repositories when component mounts
+  // useEffect hook to fetch user repositories from GitHub API
   useEffect(() => {
     fetch(`https://api.github.com/users/${githubUsername}/repos`)
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to fetch repositories from GitHub API');
+          throw new Error('Could not fetch repositories from GitHub API.');
         }
         return response.json();
       })
@@ -27,55 +29,55 @@ function Projects() {
         setError(err.message);
         setLoading(false);
       });
-  }, []); // Empty dependency array ensures effect runs once on mount
+  }, []);
 
   return (
     <div>
       <div className="card">
         <h2>My GitHub Repositories</h2>
         <p>
-          Live repositories fetched from GitHub user: <strong>{githubUsername}</strong>
+          Fetching live repositories for user: <strong>{githubUsername}</strong>
         </p>
       </div>
 
-      {/* Loading state display */}
-      {loading && (
-        <div className="card">
-          <p>Loading GitHub repositories...</p>
-        </div>
-      )}
+      {/* Render Spinner component while loading */}
+      {loading && <Spinner />}
 
-      {/* Error state display */}
-      {error && (
-        <div className="card" style={{ borderColor: '#f87171' }}>
-          <p style={{ color: '#dc2626' }}><strong>Error:</strong> {error}</p>
-        </div>
-      )}
+      {/* Render ErrorMessage component if API call fails */}
+      {error && <ErrorMessage message={error} />}
 
-      {/* Displaying fetched repositories */}
+      {/* Render repository list after loading completes without error */}
       {!loading && !error && (
         <div>
           {repos.length === 0 ? (
             <div className="card">
-              <p>No public repositories found.</p>
+              <p>No public repositories found for this account.</p>
             </div>
           ) : (
             repos.map((repo) => (
               <div key={repo.id} className="card">
+                {/* Repository Name */}
                 <h3 style={{ color: '#1e3a8a', marginBottom: '8px', fontSize: '18px' }}>
                   {repo.name}
                 </h3>
-                <p style={{ marginBottom: '10px', fontSize: '14px', color: '#555555' }}>
+                
+                {/* Repository Description */}
+                <p style={{ marginBottom: '12px', fontSize: '14px', color: '#555555' }}>
                   {repo.description || 'No description available for this repository.'}
                 </p>
-                <a
-                  href={repo.html_url}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ color: '#2563eb', fontWeight: 'bold', fontSize: '14px', textDecoration: 'underline' }}
-                >
-                  View Repository on GitHub &rarr;
-                </a>
+
+                {/* Repository Link & Stars */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+                  <a
+                    href={repo.html_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ color: '#2563eb', fontWeight: 'bold', fontSize: '14px', textDecoration: 'underline' }}
+                  >
+                    View Repository on GitHub &rarr;
+                  </a>
+                  <span className="skill-item">⭐ Stars: {repo.stargazers_count}</span>
+                </div>
               </div>
             ))
           )}
