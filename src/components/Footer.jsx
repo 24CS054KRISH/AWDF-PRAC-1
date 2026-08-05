@@ -1,11 +1,12 @@
 import React from 'react';
 
-// Basic Footer Component (Placeholder for Commit 1)
+// Simple Footer component
 function Footer() {
   return (
-    <footer className="footer">
-      <p>&copy; 2026 Student Portfolio</p>
-    </footer>
+    <div className="footer-box">
+      <p>&copy; 2026 Krish Mendapara | Student Portfolio</p>
+      <p>Advanced Web Development Frameworks - Practical 1</p>
+    </div>
   );
 }
 

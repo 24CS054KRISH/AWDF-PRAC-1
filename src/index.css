@@ -1,20 +1,117 @@
-/* Initial basic styling for Commit 1 */
+/* Basic and simple CSS for Student Portfolio Practical 1 */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-  background-color: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f4f9;
+  color: #333333;
+  line-height: 1.6;
 }
 
+/* Main wrapper div */
 .container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 30px auto;
+  padding: 0 15px;
 }
 
-.header, .section, .footer {
-  background: #ffffff;
-  padding: 15px;
+/* Header Component Styling */
+.header-box {
+  background-color: #1e3a8a;
+  color: #ffffff;
+  padding: 25px;
+  text-align: center;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.header-box h1 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.header-box p {
+  font-size: 15px;
+  color: #e2e8f0;
+}
+
+/* Common Section Card Style */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 20px;
+  color: #1e3a8a;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #1e3a8a;
+  padding-bottom: 5px;
+}
+
+/* About Section Styling */
+.about-text {
   margin-bottom: 15px;
-  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.info-list {
+  list-style-type: none;
+}
+
+.info-list li {
+  padding: 6px 0;
+  border-bottom: 1px dashed #eeeeee;
+  font-size: 14px;
+}
+
+.info-list strong {
+  color: #1e3a8a;
+}
+
+/* Skills Section Styling */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.skill-item {
+  background-color: #e0e7ff;
+  color: #1e3a8a;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #c7d2fe;
+}
+
+/* Footer Component Styling */
+.footer-box {
+  background-color: #333333;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Simple Responsive Mobile View */
+@media (max-width: 600px) {
+  .container {
+    margin: 15px auto;
+  }
+  
+  .header-box h1 {
+    font-size: 22px;
+  }
 }

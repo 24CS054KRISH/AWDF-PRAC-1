@@ -1,12 +1,20 @@
 import React from 'react';
 
-// Basic Skills Component (Placeholder for Commit 1)
-function Skills() {
+// Skills component rendering skillList prop dynamically using map()
+function Skills(props) {
   return (
-    <section className="section">
-      <h2>Skills</h2>
-      <p>Technical skills list will be displayed here.</p>
-    </section>
+    <div className="card">
+      <h2>My Skills</h2>
+      
+      {/* Rendering array items using map() */}
+      <div className="skills-container">
+        {props.skillList.map((skill, index) => (
+          <span key={index} className="skill-item">
+            {skill}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
 
