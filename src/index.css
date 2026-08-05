@@ -112,6 +112,44 @@ body {
   color: #1e3a8a;
 }
 
+/* Button Style */
+.btn {
+  background-color: #1e3a8a;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* Form Styling */
+.contact-form {
+  margin-top: 10px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.submitted-box {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #e0e7ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
 /* Skills Section Styling */
 .skills-container {
   display: flex;
